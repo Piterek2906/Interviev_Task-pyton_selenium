@@ -1,0 +1,1 @@
+BASE_URL = "https://sourceful.nl/nl/contact-pl/"
