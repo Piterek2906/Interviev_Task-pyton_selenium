@@ -3,7 +3,6 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-
 driver = webdriver.Chrome()
 
 class Forum(webdriver.Chrome):
@@ -18,18 +17,25 @@ class Forum(webdriver.Chrome):
         self.get(const.BASE_URL)
 
     def wpisz_imie(self, imie_nazwisko):
-        pole_imie = driver.find_element(By.NAME,'your-name')
+        pole_imie = driver.find_element(By.XPATH, "//span[@data-name='your-name']")
         pole_imie.send_keys(imie_nazwisko)
 
 
     def wpisz_email(self, email):
-        pole_email = driver.find_element(By.NAME,'your-email')
+        pole_email = driver.find_element(By.XPATH, "//span[@data-name='your-email']")
         pole_email.send_keys(email)
 
     def wpisz_temat(self,temat):
-        pole_temat = driver.find_element(By.NAME,'your-subject')
+        pole_temat = driver.find_element(By.XPATH,"//span[@data-name='your-subject']")
         pole_temat.send_keys(temat)
 
     def wpisz_tekst(self,tekst):
         pole_tekst = driver.find_element(By.NAME,'your-message')
         pole_tekst.send_keys(tekst)
+
+
+    def wyslij_formularz(self, wyslij):
+        przycisk_wyslij = driver.find_element(By.CLASS_NAME,'wpcf7-form-control has-spinner wpcf7-submit')
+        przycisk_wyslij.click()
+
+
